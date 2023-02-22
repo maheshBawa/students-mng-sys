@@ -2,7 +2,6 @@ package com.student.student;
 
 import java.time.LocalDate;
 import java.time.Period;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -40,11 +39,9 @@ public class Student {
         this.name = name;
         this.dob = dob;
         this.email = email;
-
     }
 
     public Student(){
-
     }
 
     public Long getId() {
@@ -89,7 +86,6 @@ public class Student {
 
   @Override
   public String toString(){
-
     return "student{" +
     "id=" + id+
     ", name='" + name + '\'' +

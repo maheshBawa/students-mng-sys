@@ -1,13 +1,13 @@
 package com.student.student;
-
 import java.time.LocalDate;
-
+import java.time.Period;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 
 @Entity
@@ -27,17 +27,20 @@ public class Student {
     private Long id;
     private String name;
     private LocalDate dob;
+
+   @Transient
     private Integer age;
     private String email;
 
-
-    public Student(Long id, String name, LocalDate dob, Integer age, String email){
+    public Student(Long id, String name, LocalDate dob, String email){
         this.id = id;
         this.name = name;
         this.dob = dob;
-        this.age = age;
         this.email = email;
 
+    }
+
+    public Student() {
     }
 
     public Long getId() {
@@ -65,7 +68,7 @@ public class Student {
     }
 
     public Integer getAge() {
-        return this.age;
+        return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {
@@ -81,7 +84,7 @@ public class Student {
 	}
 
   @Override
-  public String toString(){
+  public String toString() {
 
     return "student{" +
     "id=" + id+
@@ -90,10 +93,7 @@ public class Student {
     ", age=" + age +
     ", email='" + email + '\'' +
     '}';
-  }
-
-
-    
+  }  
 }
 	
 

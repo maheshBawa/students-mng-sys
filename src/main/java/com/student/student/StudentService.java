@@ -1,6 +1,8 @@
 package com.student.student;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +17,16 @@ public class StudentService {
 	}
 	
     @GetMapping
-	public List<Student> getStudents(){
+	public List<Student>getStudents(){
 		return studentRepository.findAll();
 	}
 
 	public Student addNewStudent(Student student) {
-		System.out.println(student);
+		Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+
+		if (studentOptional.isPresent()){
+			throw new IllegalStateException("email taken");
+		}
 		return studentRepository.save(student);
     }
 }

@@ -1,14 +1,11 @@
 package com.student.student;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
-@Component
+@Service
 public class StudentService {
 	private final StudentRepository studentRepository;
 
@@ -19,23 +16,11 @@ public class StudentService {
 	
     @GetMapping
 	public List<Student> getStudents(){
-		return List.of(
-			new Student(
-				1L,
-				"Mahesh",
-				LocalDate.of(1998, Month.MAY, 31),
-				21,
-				"maheshbawantha1998@gmail.com",
-				"password123"
-			), 
-			new Student(
-				2L,
-				"Bawantha",
-				LocalDate.of(1998, Month.MAY, 31),
-				21,
-				"maheshbawantha@gmail.com",
-				"password123"
-			)
-		);
+		return studentRepository.findAll();
 	}
+
+	public Student addNewStudent(Student student) {
+		System.out.println(student);
+		return studentRepository.save(student);
+    }
 }

@@ -16,7 +16,16 @@ public class StudentService {
 				"Mahesh",
 				LocalDate.of(1998, Month.MAY, 31),
 				21,
-				"maheshbawantha1998@gmail.com"
+				"maheshbawantha1998@gmail.com",
+				"password123"
+			), 
+			new Student(
+				2L,
+				"Bawantha",
+				LocalDate.of(1998, Month.MAY, 31),
+				21,
+				"maheshbawantha@gmail.com",
+				"password123"
 			)
 		);
 	}

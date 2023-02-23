@@ -28,14 +28,16 @@ public class Student {
     private LocalDate dob;
     private Integer age;
     private String email;
+    private String password;
 
 
-    public Student(Long id, String name, LocalDate dob, Integer age, String email){
+    public Student(Long id, String name, LocalDate dob, Integer age, String email, String password) {
         this.id = id;
         this.name = name;
         this.dob = dob;
         this.age = age;
         this.email = email;
+        this.password = password;
 
     }
 
@@ -79,6 +81,14 @@ public class Student {
 		this.email = email;
 	}
 
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
   @Override
   public String toString(){
 
@@ -88,6 +98,7 @@ public class Student {
     ", dob=" + dob +
     ", age=" + age +
     ", email='" + email + '\'' +
+    ", password='" + password + '\'' +
     '}';
   }
 }

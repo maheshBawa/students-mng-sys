@@ -1,5 +1,6 @@
 package com.student.student;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -43,7 +44,7 @@ public class StudentService {
 	}
 
 	@Transactional
-    public  void updateStudent(Long studentId, String name, String email) {
+    public  void updateStudent(Long studentId, String name, String email, LocalDate dob) {
 		Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
 			"student with id " + studentId + " does not exist " )
 			);
@@ -59,6 +60,10 @@ public class StudentService {
 					throw new IllegalStateException("Email was taken");
 				}
 				student.setEmail(email);
+			}
+
+			if(dob != null && !Objects.equals(student.getDob(), dob)){
+				student.setDob(dob);
 			}
     }
 }

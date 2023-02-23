@@ -1,5 +1,6 @@
 package com.student.student;
 
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,8 +44,9 @@ public class studentController {
     public void updateStudent(
         @PathVariable("studentId") Long studentId,
         @RequestParam(required = false) String name,
-        @RequestParam(required = false) String email
+        @RequestParam(required = false) String email,
+        @RequestParam(required = false) LocalDate dob
     ){
-        studentService.updateStudent(studentId, name, email);
+        studentService.updateStudent(studentId, name, email, dob);
     }
 }
